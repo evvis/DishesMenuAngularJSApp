@@ -9,26 +9,41 @@
   <title>Dishes Menu AngularJS App</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/ui-bootstrap/ui-bootstrap-csp.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="controllers.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-
+  <script src="bower_components/ui-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.js"></script>
 </head>
 <body ng-controller="DishesList">
   <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead">
     <tr>
-      <th scope="col">Title</th>
+      <th scope="col" ng-click="sort('title')">Title<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
+      </th>
       <th scope="col">Image</th>
-      <th scope="col">Rating</th>
-      <th scope="col">Price</th>
+      <th scope="col" ng-click="sort('rating')">Rating<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('rating'), 'glyphicon-chevron-down' : isSortDown('rating')}"></i>
+      </th>
+      <th scope="col" ng-click="sort('price')">Price<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'), 'glyphicon-chevron-down' : isSortDown('price')}"></i>
+      </th>
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dishes in dishes">
-      <th scope="col">{{dishes.title}}</th>
+    <tr class="item" ng-repeat="dishes in dishes | orderBy:sortField:reverse">
+      <th scope="col">
+        {{dishes.title}}
+        <div>
+          <button class="btn" ng-click="open()">Ingridients</button>
+        </div>
+      </th>
       <th scope="col">
         <div class="preview-img">
           <img ng-src="{{ dishes.image }}" alt="{{ dishes.title }}"/>
@@ -39,13 +54,5 @@
     </tr>
     </tbody>
   </table>
-
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="controllers.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
