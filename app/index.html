@@ -26,6 +26,13 @@
 <body ng-controller="DishesList">
   <table class="table">
     <thead class="thead">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" ng-model="query">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">GO!</button>
+      </span>
+    </div>
+    </
     <tr>
       <th scope="col" ng-click="sort('title')">Title<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
       </th>
