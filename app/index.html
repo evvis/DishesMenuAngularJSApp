@@ -37,20 +37,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dishes in dishes | orderBy:sortField:reverse">
+    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse" ng-click="modalUpdate(dish)">
       <th scope="col">
-        {{dishes.title}}
-        <div>
-          <button class="btn" ng-click="open()">Ingridients</button>
-        </div>
+        {{dish.title}}
       </th>
       <th scope="col">
         <div class="preview-img">
-          <img ng-src="{{ dishes.image }}" alt="{{ dishes.title }}"/>
+          <img ng-src="{{ dish.image }}" alt="{{ dish.title }}"/>
         </div>
       </th>
-      <th scope="col">{{dishes.rating}}</th>
-      <th scope="col">{{dishes.price}}</th>
+      <th scope="col">{{dish.rating}}</th>
+      <th scope="col">{{dish.price}}</th>
     </tr>
     </tbody>
   </table>
