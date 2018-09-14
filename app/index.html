@@ -37,8 +37,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse" ng-click="modalUpdate(dish)">
-      <th scope="col">
+    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse">
+      <th scope="col" ng-click="modalUpdate(dish)">
         {{dish.title}}
       </th>
       <th scope="col">

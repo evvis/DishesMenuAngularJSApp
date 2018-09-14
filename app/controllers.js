@@ -26,9 +26,13 @@ angular.module('dishesApp', ['ui.bootstrap'])
 
         $scope.modalUpdate = function (dish) {
             var modalInstance = $uibModal.open({
-                templateUrl: 'itemIngridients.html',
-                controller: function ($scope, dish) {
+                templateUrl: 'itemIngredients.html',
+                controller: function ($scope, dish, $uibModalInstance) {
                     $scope.dish = dish;
+
+                    $scope.cancel = function () {
+                        $uibModalInstance.dismiss('cancel');
+                    };
                 },
                 resolve: {
                     dish: function () {
