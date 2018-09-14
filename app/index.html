@@ -32,7 +32,8 @@
         <button class="btn btn-default" type="button">GO!</button>
       </span>
     </div>
-    </
+    <h3>{{query}}</h3>
+    </br>
     <tr>
       <th scope="col" ng-click="sort('title')">Title<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
       </th>
@@ -44,7 +45,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse">
+    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse | filter: query">
       <th scope="col" ng-click="modalUpdate(dish)">
         {{dish.title}}
       </th>
