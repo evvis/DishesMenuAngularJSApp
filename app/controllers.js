@@ -4,20 +4,27 @@ angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
     .controller('DishesList', ['$scope', '$http', '$uibModal', '$log', '$localStorage',
         function($scope, $http, $uibModal, $log, $localStorage) {
 
+        $scope.resetAllStore = function () {
+            $localStorage.$reset({
+                sortField: undefined,
+                reverse: false
+            });
+
+            // location.reload();
+        };
+
         $http.get('/menu.json').success(function (data) {
             $scope.dishes = data;
         });
 
-        $scope.resetAllStore = function () {
-            $localStorage.$reset({
-               sortField: undefined,
-               reverse: false
-            });
-        };
 
-        $scope.filtering = function () {
-            $localStorage.filter = $scope.filtering;
-        }
+
+        $scope.filter = $localStorage.filter;
+
+        $scope.addToStorage = function () {
+            $localStorage.filter = $scope.filter;
+            console.log($localStorage);
+        };
 
         $scope.sortField = $localStorage.sortField;
         $scope.reverse = $localStorage.reverse;
