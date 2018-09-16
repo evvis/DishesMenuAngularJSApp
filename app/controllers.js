@@ -59,3 +59,7 @@ angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
             });
         };
     }]);
+    // .filter('filterByTitle', function () {
+    //     return function (input) {
+    //     }
+    // });

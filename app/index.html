@@ -27,14 +27,26 @@
   <table class="table">
     <thead class="thead">
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" ng-model="query">
+      <input type="text" class="form-control" ng-model="query" placeholder="Filter all">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" ng-click="resetAllStore()">Reset all</button>
       </span>
     </div>
     </br>
-    <h3>{{query}}</h3>
+    <h3 class="text-center">{{query}}</h3>
     </br>
+    <tr>
+      <th>
+        <input type="text" class="form-control" ng-model="filterByTitle.title" placeholder="Filter by Title">
+      </th>
+      <th />
+      <th>
+        <input type="number" class="form-control" ng-model="filterByRating.rating" placeholder="Filter by Rating">
+      </th>
+      <th>
+        <input type="number" class="form-control" ng-model="filterByPrice.price" placeholder="Filter by Price">
+      </th>
+    </tr>
     <tr>
       <th scope="col" ng-click="sort('title')">
         Title
@@ -49,7 +61,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse | filter: query">
+    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse |
+                                                  filter:query |
+                                                  filter:filterByTitle |
+                                                  filter:filterByRating |
+                                                  filter:filterByPrice">
       <th scope="col" ng-click="modalUpdate(dish)">
         {{dish.title}}
       </th>
