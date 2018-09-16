@@ -1,21 +1,32 @@
 'use strict';
 
-angular.module('dishesApp', ['ui.bootstrap'])
-    .controller('DishesList', ['$scope', '$http', '$uibModal', '$log', function($scope, $http, $uibModal, $log) {
+angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
+    .controller('DishesList', ['$scope', '$http', '$uibModal', '$log', '$localStorage',
+        function($scope, $http, $uibModal, $log, $localStorage) {
+
         $http.get('/menu.json').success(function (data) {
             $scope.dishes = data;
         });
 
-        $scope.sortField = undefined;
-        $scope.reverse = false;
+        $scope.resetAllStore = function () {
+            $localStorage.$reset({
+               sortField: undefined,
+               reverse: false
+            });
+        };
+
+        $scope.sortField = $localStorage.sortField;
+        $scope.reverse = $localStorage.reverse;
 
         $scope.sort = function (fieldName) {
             if ($scope.sortField === fieldName){
                 $scope.reverse = !$scope.reverse;
             } else {
-                $scope .sortField = fieldName;
+                $scope.sortField = fieldName;
                 $scope.reverse = false;
             }
+            $localStorage.sortField = $scope.sortField;
+            $localStorage.reverse = $scope.reverse;
         };
         $scope.isSortUp = function (fieldName) {
             return $scope.sortField === fieldName && !$scope.reverse;

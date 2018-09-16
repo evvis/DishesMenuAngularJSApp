@@ -3,7 +3,6 @@
 <!--[if IE 7]>         <html lang="en" ng-app="dishesApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="dishesApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="dishesApp" class="no-js"> <!--<![endif]-->
-<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Dishes Menu AngularJS App</title>
@@ -22,6 +21,7 @@
   <script src="bower_components/ui-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
 </head>
 <body ng-controller="DishesList">
   <table class="table">
@@ -29,13 +29,17 @@
     <div class="input-group input-group-lg">
       <input type="text" class="form-control" ng-model="query">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">GO!</button>
+        <button class="btn btn-default" type="button" ng-click="resetAllStore()">Reset all</button>
       </span>
     </div>
+    </br>
     <h3>{{query}}</h3>
     </br>
     <tr>
-      <th scope="col" ng-click="sort('title')">Title<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
+      <th scope="col" ng-click="sort('title')">
+        Title
+        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'),
+                                        'glyphicon-chevron-down' : isSortDown('title')}"></i>
       </th>
       <th scope="col">Image</th>
       <th scope="col" ng-click="sort('rating')">Rating<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('rating'), 'glyphicon-chevron-down' : isSortDown('rating')}"></i>
