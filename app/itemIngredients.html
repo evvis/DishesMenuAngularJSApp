@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
   <ul>
-    <li ng-repeat="ingredients in dish.ingredients">
+    <li ng-repeat="ingredients in dish.ingredients  track by $index">
         {{ingredients}}
     </li>
   </ul>

@@ -27,45 +27,44 @@
   <table class="table">
     <thead class="thead">
     <div class="input-group input-group-lg">
-      <input type="text" class="form-control" ng-model="query" placeholder="Filter all">
+      <input type="text" class="form-control" ng-model="filter.$" placeholder="Filter all">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" ng-click="resetAllStore()">Reset all</button>
       </span>
     </div>
     </br>
-    <h3 class="text-center">{{query}}</h3>
+    <!--<h3 class="text-center">{{filterData}}</h3>-->
     </br>
     <tr>
       <th>
-        <input type="text" class="form-control" ng-model="filterByTitle.title" placeholder="Filter by Title">
+        <input type="text" class="form-control" ng-model="filter.title" placeholder="Filter by Title">
       </th>
       <th />
       <th>
-        <input type="number" class="form-control" ng-model="filterByRating.rating" placeholder="Filter by Rating">
+        <input type="number" class="form-control" ng-model="filter.rating" placeholder="Filter by Rating">
       </th>
       <th>
-        <input type="number" class="form-control" ng-model="filterByPrice.price" placeholder="Filter by Price">
+        <input type="number" class="form-control" ng-model="filter.price" placeholder="Filter by Price">
       </th>
     </tr>
     <tr>
       <th scope="col" ng-click="sort('title')">
         Title
-        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'),
-                                        'glyphicon-chevron-down' : isSortDown('title')}"></i>
+        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
       </th>
       <th scope="col">Image</th>
-      <th scope="col" ng-click="sort('rating')">Rating<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('rating'), 'glyphicon-chevron-down' : isSortDown('rating')}"></i>
+      <th scope="col" ng-click="sort('rating')">
+        Rating
+        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('rating'), 'glyphicon-chevron-down' : isSortDown('rating')}"></i>
       </th>
-      <th scope="col" ng-click="sort('price')">Price<i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'), 'glyphicon-chevron-down' : isSortDown('price')}"></i>
+      <th scope="col" ng-click="sort('price')">
+        Price
+        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'), 'glyphicon-chevron-down' : isSortDown('price')}"></i>
       </th>
     </tr>
     </thead>
     <tbody>
-    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse |
-                                                  filter:query |
-                                                  filter:filterByTitle |
-                                                  filter:filterByRating |
-                                                  filter:filterByPrice">
+    <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse | filter:filter">
       <th scope="col" ng-click="modalUpdate(dish)">
         {{dish.title}}
       </th>

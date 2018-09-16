@@ -15,6 +15,10 @@ angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
             });
         };
 
+        $scope.filtering = function () {
+            $localStorage.filter = $scope.filtering;
+        }
+
         $scope.sortField = $localStorage.sortField;
         $scope.reverse = $localStorage.reverse;
 
