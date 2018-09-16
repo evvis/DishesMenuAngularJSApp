@@ -1,18 +1,37 @@
 /* app css stylesheet */
+
+.top-menu {
+  background-color: #76b729;
+}
+
 img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
   height: 100px;
+  border-radius: 15px;
 }
 
 .preview-img {
   margin-bottom: 16px;
   position: relative;
+  text-align: center;
+
 }
 .item {
   height: 50px;
+}
+
+.main-filter {
+  padding: 20px;
 }
 
 [ng-click],
 [data-ng-click],
 [x-ng-click] {
   cursor: pointer;
+}
+
+th {
+  text-align: center!important;
 }

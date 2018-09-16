@@ -4,28 +4,23 @@ angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
     .controller('DishesList', ['$scope', '$http', '$uibModal', '$log', '$localStorage',
         function($scope, $http, $uibModal, $log, $localStorage) {
 
-        $scope.resetAllStore = function () {
-            $localStorage.$reset({
-                sortField: undefined,
-                reverse: false
-            });
-
-            // location.reload();
-        };
-
         $http.get('/menu.json').success(function (data) {
             $scope.dishes = data;
         });
 
-
-
-        $scope.filter = $localStorage.filter;
+        $scope.resetAllStore = function () {
+            $localStorage.$reset({
+               sortField: undefined,
+               reverse: false
+            });
+            location.reload();
+        };
 
         $scope.addToStorage = function () {
             $localStorage.filter = $scope.filter;
-            console.log($localStorage);
         };
 
+        $scope.filter = $localStorage.filter;
         $scope.sortField = $localStorage.sortField;
         $scope.reverse = $localStorage.reverse;
 
@@ -70,7 +65,3 @@ angular.module('dishesApp', ['ngStorage', 'ui.bootstrap'])
             });
         };
     }]);
-    // .filter('filterByTitle', function () {
-    //     return function (input) {
-    //     }
-    // });
