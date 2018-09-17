@@ -3,6 +3,7 @@
 <!--[if IE 7]>         <html lang="en" ng-app="dishesApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="dishesApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="dishesApp" class="no-js"> <!--<![endif]-->
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Dishes Menu AngularJS App</title>
@@ -11,57 +12,78 @@
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="bower_components/ui-bootstrap/ui-bootstrap-csp.css">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="components/ui-bootstrap/ui-bootstrap-csp.css">
+  <link rel="stylesheet" href="components/bootstrap/css/bootstrap.min.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
   <script src="controllers.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="bower_components/ui-bootstrap/ui-bootstrap.js"></script>
-  <script src="bower_components/ui-bootstrap/ui-bootstrap-tpls.js"></script>
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
-  <script src="bootstrap/js/bootstrap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+  <script src="components/ui-bootstrap/ui-bootstrap.js"></script>
+  <script src="components/ui-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="components/ngstorage/ngStorage.min.js"></script>
+  <script src="components/bootstrap/js/bootstrap.js"></script>
 </head>
 <body ng-controller="DishesList">
   <table class="table">
     <thead class="top-menu">
       <div class="col-sm-12 main-filter top-menu">
         <div class="input-group input-group-lg top-menu">
-          <input type="text" class="form-control " ng-keyup="addToStorage()" ng-model="filter.$" placeholder="Filter all">
+          <input type="text" class="form-control form-input"
+                 ng-keyup="addToStorage()"
+                 ng-model="filter.$"
+                 placeholder="Filter all">
           <span class="input-group-btn">
-            <button class="btn btn-default center-block" type="button" ng-click="resetAllStore()">Reset all filters</button>
+            <button type="button" class="btn btn-default btn-custom"
+                    ng-click="resetAllStore()">
+              Reset all filters
+            </button>
           </span>
         </div>
       </div>
       <tr class="top-menu">
         <th>
-          <input type="text" class="form-control" ng-keyup="addToStorage()" ng-model="filter.title" placeholder="Filter by Title">
+          <input type="text" class="form-control form-input"
+                 ng-keyup="addToStorage()"
+                 ng-model="filter.title"
+                 placeholder="Filter by Title">
         </th>
         <th />
         <th>
-          <input type="number" class="form-control" ng-keyup="addToStorage()" ng-model="filter.rating" placeholder="Filter by Rating">
+          <input type="number" class="form-control form-input"
+                 ng-keyup="addToStorage()"
+                 ng-model="filter.rating"
+                 placeholder="Filter by Rating">
         </th>
         <th>
-          <input type="number" class="form-control" ng-keyup="addToStorage()" ng-model="filter.price" ng-change="filtering()" placeholder="Filter by Price">
+          <input type="number" class="form-control form-input"
+                 ng-keyup="addToStorage()"
+                 ng-model="filter.price"
+                 placeholder="Filter by Price">
         </th>
       </tr>
       <div>
         <tr class="text-uppercase">
           <th scope="col" ng-click="sort('title')">
             Title
-            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('title'), 'glyphicon-chevron-down' : isSortDown('title')}"></i>
+            <i class="glyphicon" ng-class="{'glyphicon-chevron-up'
+               : isSortUp('title'), 'glyphicon-chevron-down'
+               : isSortDown('title')}"></i>
           </th>
           <th scope="col">Image</th>
           <th scope="col" ng-click="sort('rating')">
             Rating
-            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('rating'), 'glyphicon-chevron-down' : isSortDown('rating')}"></i>
+            <i class="glyphicon" ng-class="{'glyphicon-chevron-up'
+              : isSortUp('rating'), 'glyphicon-chevron-down'
+              : isSortDown('rating')}"></i>
           </th>
           <th scope="col" ng-click="sort('price')">
             Price
-            <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('price'), 'glyphicon-chevron-down' : isSortDown('price')}"></i>
+            <i class="glyphicon" ng-class="{'glyphicon-chevron-up'
+              : isSortUp('price'), 'glyphicon-chevron-down'
+              : isSortDown('price')}"></i>
           </th>
         </tr>
+      </div>
     </thead>
     <tbody>
     <tr class="item" ng-repeat="dish in dishes | orderBy:sortField:reverse | filter:filter">

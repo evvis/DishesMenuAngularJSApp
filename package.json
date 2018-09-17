@@ -14,7 +14,8 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
     "karma-junit-reporter": "^2.0.0",
-    "protractor": "^5.4.1"
+    "protractor": "^5.4.1",
+    "standard": "^12.0.1"
   },
   "scripts": {
     "postinstall": "bower install",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "angular": "^1.7.2",
-    "angular-ui-bootstrap": "^2.5.6"
+    "angular-ui-bootstrap": "^2.5.6",
+    "ngstorage": "^0.3.11"
   }
 }

@@ -3,6 +3,13 @@
 .top-menu {
   background-color: #76b729;
 }
+.form-input{
+  background-color: #caec87!important;
+}
+
+.btn-custom {
+  background-color: #76e16f!important;
+}
 
 img {
   max-width: 200px;
