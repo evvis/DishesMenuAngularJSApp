@@ -1,25 +1,44 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.top-menu {
+  background-color: #76b729;
+}
+.form-input{
+  background-color: #caec87!important;
 }
 
-.menu:before {
-  content: "[";
+.btn-custom {
+  background-color: #76e16f!important;
 }
 
-.menu:after {
-  content: "]";
+img {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: 100px;
+  border-radius: 15px;
 }
 
-.menu > li {
-  display: inline;
+.preview-img {
+  margin-bottom: 16px;
+  position: relative;
+  text-align: center;
+
+}
+.item {
+  height: 50px;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.main-filter {
+  padding: 20px;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer;
+}
+
+th {
+  text-align: center!important;
 }
